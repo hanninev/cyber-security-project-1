@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Join us!</title>
+    </head>
+		
+        {% if member %}
+        <p>You are logged in!</p>
+        
+        <h2>Your info:</h2>
+
+        <p>{{member.name}}</p>
+        <p>{{member.address}}</p>
+        <p>{{member.email}}</p>
+        <p>{{member.general}}</p>
+
+        <img src={{member.img_url}} height="100px" width="100px"/><br/>
+
+        <a href="/modify/{{member.id}}">Edit your info</a>
+
+        {% else %}
+        <h2>Register</h2>
+
+       <form action='add/' method="POST">
+            {% csrf_token %}
+
+            Name:
+            <input type="text" name="name"/><br/>
+            
+            Address:
+            <input type="text" name="address"/><br/>
+            
+            Email:
+            <input type="text" name="email"/><br/>
+            
+            Password:
+            <input type="text" name="password"/><br/>
+
+            Your image URL:
+            <input type="text" name="img_url"/><br/>
+
+            General info:
+            <textarea type="textarea" name="general">{{member.general}}</textarea><br/>
+
+            <input type="submit" value="Send"/>
+        </form>
+
+        <h2>Log in</h2>
+        <form action='login/' method="POST">
+            {% csrf_token %}
+
+            Email:
+            <input type="text" name="email"/><br/>
+            
+            Password:
+            <input type="text" name="password"/><br/>
+
+            <input type="submit" value="Send"/>
+        </form>
+        {% endif %}
+
+        <h2>We are already here</h2>
+
+        <p>Below are pictures of our members. Sign in to add yours! </p>
+
+        {% for m in members %}
+        <img src={{m.img_url}} height="100px" width="100px"/>
+        {% endfor %}
+    </body>
+
+
+    </body>
+</html>

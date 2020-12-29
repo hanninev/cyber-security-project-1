@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Your page</title>
+    </head>
+
+    <h1>Your info</h1>
+
+        <h2>Edit your info</h2>
+
+        <form action='edit/' method="POST">
+            {% csrf_token %}
+            
+            Name:
+            <input type="text" name="name" value="{{member.name}}"/><br/>
+            
+            Address:
+            <input type="text" name="address" value="{{member.address}}"/><br/>
+            
+            Email:
+            <input type="text" name="email" value="{{member.email}}"/><br/>
+            
+            Set a new password:
+            <input type="text" name="password" value="{{member.password}}"/><br/>
+
+            Your image URL:
+            <input type="text" name="img_url" value="{{member.img_url}}"/><br/>
+
+            General info:
+            <textarea type="textarea" name="general">{{member.general}}</textarea><br/>
+
+            <input type="submit" value="Send"/>
+        </form>
+
+    </body>
+
+
+    </body>
+</html>
